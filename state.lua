@@ -21,12 +21,16 @@
 --
 -------------------------------------------------------------------------------
 
-
 local msg = require "mp.msg"
 local utils = require "mp.utils"
+local options = require "mp.options"
+
+local opts = {
+    filename=""
+}
+options.read_options(opts, "mpv-state")
 
 local state = {statistics={}}
-local state_filename = mp.get_property_native("options/script-opts")["state-filename"]
 
 local playlist_set = false
 local playback_set = false
@@ -44,12 +48,12 @@ local init_audio_delay = nil
 
 -- Load a previous state from a JSON file.
 local function load_state()
-    local file = io.open(state_filename, "r")
+    local file = io.open(opts.filename, "r")
     if file == nil then
         return
     end
 
-    msg.info("load state from", state_filename)
+    msg.info("load state from", opts.filename)
     state, err = utils.parse_json(file:read("*a"))
     file:close()
 
@@ -96,7 +100,7 @@ end
 
 -- Write the current state to a JSON file.
 local function save_state()
-    local file = io.open(state_filename, "w")
+    local file = io.open(opts.filename, "w")
     local result, err = utils.format_json(state)
     if err == nil then
         file:write(result)
@@ -177,7 +181,7 @@ end
 
 -- Handler for end-file property.
 local function on_end_file(event)
-    msg.info("writing state to", state_filename)
+    msg.info("writing state to", opts.filename)
     state["statistics"]["stop-time"] = os.time()
     if event.reason == "eof" then
         state["time-pos"] = duration
@@ -230,7 +234,7 @@ local function on_property_changed(name, value)
 end
 
 -- Main context.
-if state_filename ~= nil then
+if opts.filename ~= "" then
     msg.info("state plugin enabled")
 
     load_state()
@@ -245,6 +249,8 @@ if state_filename ~= nil then
     mp.observe_property("aid", "number", on_property_changed)
     mp.observe_property("sid", "number", on_property_changed)
     mp.observe_property("audio-delay", "number", on_property_changed)
+else
+    msg.error("required mpv-state-filename option was not supplied!")
 end
 
 state["statistics"]["start-time"] = os.time()
