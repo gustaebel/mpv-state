@@ -234,9 +234,9 @@ local function on_property_changed(name, value)
 end
 
 -- Main context.
-if opts.filename ~= "" then
-    msg.info("state plugin enabled")
+msg.info("state plugin enabled")
 
+if opts.filename ~= "" then
     load_state()
 
     mp.register_event("file-loaded", on_file_loaded)
