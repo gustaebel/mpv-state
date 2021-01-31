@@ -181,7 +181,7 @@ end
 
 -- Handler for end-file property.
 local function on_end_file(event)
-    msg.info("writing state to", opts.filename)
+    msg.info("save state to", opts.filename)
     state["statistics"]["stop-time"] = os.time()
     if event.reason == "eof" then
         state["time-pos"] = duration
