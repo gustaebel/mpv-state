@@ -2,16 +2,6 @@
 
 Store and restore `mpv(1)` playback state using a JSON file.
 
-## About
-
-The following properties are supported:
-
-- playlist
-- playlist-pos
-- time-pos
-- vid, aid, sid
-- audio-delay
-
 ## Usage
 
 ```sh
@@ -22,6 +12,16 @@ Properties in the state file take precedence over options from the mpv command
 line. It is possible to pass `/dev/null` as `<filename>` if there is an existing
 state file. This makes it possible to start mpv with a fabricated state file
 and without any further playback related options.
+
+## Playback properties
+
+The following properties are currently supported:
+
+- playlist
+- playlist-pos
+- time-pos
+- vid, aid, sid
+- audio-delay
 
 ## Setup
 
