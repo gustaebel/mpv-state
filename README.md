@@ -15,7 +15,7 @@ The following properties are supported:
 ## Usage
 
 ```sh
-mpv --script=state.lua --script-opts=state-filename=state.json <filenames>
+mpv --script=mpv-state.lua --script-opts=mpv-state-filename=state.json <filenames>
 ```
 
 Properties in the state file take precedence over options from the mpv command

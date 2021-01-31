@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- mpv-state - state.lua
+-- mpv-state.lua
 -------------------------------------------------------------------------------
 --
 -- Store and restore mpv(1) playback state using a JSON file.
@@ -12,7 +12,7 @@
 --      audio-delay
 --
 -- Usage:
--- mpv --script=state.lua --script-opts=state-filename=state.json <filenames>
+-- mpv --script=mpv-state.lua --script-opts=mpv-state-filename=state.json <filenames>
 --
 -- Properties in the state file take precedence over options from the mpv
 -- command line. It is possible to pass /dev/null as <filename> if there is an
