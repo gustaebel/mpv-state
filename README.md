@@ -1,4 +1,4 @@
-# state.lua
+# mpv-state
 
 Store and restore `mpv(1)` playback state using a JSON file.
 
