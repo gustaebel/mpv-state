@@ -20,36 +20,6 @@
 -- state file and without any further playback related options.
 --
 -------------------------------------------------------------------------------
---
--- Example for a JSON state file:
--- {
---   "playlist-pos": 6,
---   "playlist": [
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 01 - Gumbo.mkv",
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 02 - The Gift.mkv",
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 03 - Our Language.mkv",
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 04 - The True Welcome.mkv",
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 05 - Swing: Pure Pleasure.mkv",
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 06 - Swing: The Velocity of Celebration.mkv",
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 07 - Dedicated to Chaos.mkv",
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 08 - Risk.mkv",
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 09 - The Adventure.mkv",
---     "/mnt/media/video/documentation/Ken Burns/Jazz/Jazz - 10 - A Masterpiece by Midnight.mkv"
---   ],
---   "time-pos": 3732.062,
---   "vid": 1,
---   "aid": 1,
---   "sid": 1,
---   "audio-delay": 0,
---   "reason": "quit",
---   "statistics": {
---     "stop-time": 1612074581,
---     "start-position": 3731.261,
---     "start-time": 1612074580
---   }
--- }
---
--------------------------------------------------------------------------------
 
 
 local msg = require "mp.msg"
