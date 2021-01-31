@@ -23,6 +23,10 @@ line. It is possible to pass `/dev/null` as `<filename>` if there is an existing
 state file. This makes it possible to start mpv with a fabricated state file
 and without any further playback related options.
 
+## Setup
+
+Refer to <https://mpv.io/manual/stable/#script-location>.
+
 ## JSON state file
 
 Example for a JSON state file:
