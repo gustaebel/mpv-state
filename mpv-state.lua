@@ -191,17 +191,19 @@ local function on_end_file(event)
 end
 
 -- Handler for playlist property.
-local function on_playlist_property_changed(name, value)
+local function on_playlist_changed(name, value)
     local playlist = {}
 
     for i, item in ipairs(value) do
         table.insert(playlist, item["filename"])
-        if item["current"] then
-            state["playlist-pos"] = i - 1
-        end
     end
 
     state["playlist"] = playlist
+end
+
+-- Handler for playlist-pos property.
+local function on_playlist_pos_changed(name, value)
+    state["playlist-pos"] = value
 end
 
 -- Handler for time-pos event.
@@ -242,7 +244,8 @@ if opts.filename ~= "" then
     mp.register_event("file-loaded", on_file_loaded)
     mp.register_event("end-file", on_end_file)
 
-    mp.observe_property("playlist", "native", on_playlist_property_changed)
+    mp.observe_property("playlist", "native", on_playlist_changed)
+    mp.observe_property("playlist-pos", "number", on_playlist_pos_changed)
     mp.observe_property("time-pos", "number", on_time_pos_initially_changed)
     mp.observe_property("duration", "number", on_duration_changed)
     mp.observe_property("vid", "number", on_property_changed)
